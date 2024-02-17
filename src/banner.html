@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+
+<!-- Voucher Banner Section -->
+<section class="h-screen  text-gray-800 py-32">
+  <div class="container mx-auto mt-5">
+    <div class="container bg-gradient-to-tl from-gray-200 to-orange-600 text-white p-10 rounded-lg shadow-lg max-w-md mx-auto">
+      <div class="text-3xl font-bold mb-4">Special Movie!</div>
+      <div class="text-lg mb-4">Get <span class="text-yellow-400 font-bold">25% OFF</span> your next purchase!</div>
+      <div class="text-base mb-4">Use coupon code:</div>
+
+      <div class=" text-white-800 rounded-lg px-4 py-2 flex items-center justify-between">
+        <span id="couponCode" class="text-2xl font-semibold">TAILOFFER25</span>
+        <!-- <button onclick="copyCouponCode()" class="bg-blue-800 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Copy</button> -->
+      </div>
+      <div class="text-sm mt-4">
+        <p>Valid until <span class="font-semibold">December 31, 2024</span></p>
+        <p>Terms and conditions apply.</p>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center space-x-2 mt-5">
+      <input id="couponInput" type="text" class="min-w-72 border border-gray-500 px-5 py-3 rounded-lg focus:outline-none focus:ring focus:border-blue-300" placeholder="Silahkan masukkan code">
+<button onclick="applyCoupon()" class="bg-orange-500 text-white px-7 py-3 rounded-r-md hover:bg-orange-700 focus:outline-none focus:ring focus:border-blue-300">Apply</button>
+
+
+    </div>
+  </div>
+
+  <script>
+    var availableCoupons = ['TAILOFFER25', 'MUSICYUK', 'MOVIEYUK', 'NONTONYUK'];
+  var currentCouponIndex = 0;
+
+  function copyCouponCode() {
+    const couponCode = document.getElementById('couponCode');
+    const tempInput = document.createElement('input');
+    tempInput.value = couponCode.innerText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+  }
+
+  function applyCoupon() {
+    const couponInput = document.getElementById('couponInput');
+    const appliedCouponCode = couponInput.value.toUpperCase();
+
+    if (availableCoupons.includes(appliedCouponCode)) {
+      // Save coupon code and set flag in localStorage
+      localStorage.setItem('appliedCouponCode', appliedCouponCode);
+      localStorage.setItem('couponApplied', 'true');
+
+      // Display success message
+      swal("Good job!", "Coupon code applied successfully!", "success");
+
+      // Update coupon code and clear the input field
+      currentCouponIndex = (currentCouponIndex + 1) % availableCoupons.length;
+      document.getElementById('couponCode').innerText = availableCoupons[currentCouponIndex];
+      couponInput.value = '';
+
+      // Redirect to index.html
+      window.location.href = "index.html";
+    } else {
+      // Display error message
+      swal("Oops!", "Invalid coupon code. Please try again.", "error");
+    }
+  }
+
+  </script>
+</section>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prize Winning Wheel</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./index.js"></script>
+
+</head>
+
+<body>
+    <!-- spinner -->
+    <div class="container">
+        <div class="wheel">
+            <!--style spinner -->
+            <div class="amount" style="--index: 1; --color : #0000"> <span>20% OFF</span></div>
+            <div class="amount" style="--index: 2; --color : #20b2aa"> <span>5% OFF</span></div>
+            <div class="amount" style="--index: 3; --color : #d63e92"> <span>35% OFF</span></div>
+            <div class="amount" style="--index: 4; --color : #daa520"> <span>16% OFF</span></div>
+            <div class="amount" style="--index: 5; --color : #ff340f"> <span>Try Again</span></div>
+            <div class="amount" style="--index: 6; --color : #ff7f50"> <span>50% OFF</span></div>
+            <div class="amount" style="--index: 7; --color : #3cb371"> <span>30% OFF</span></div>
+            <div class="amount" style="--index: 8; --color : #4169e1"> <span>Try Again</span></div>
+        </div>
+        <!-- Spin button -->
+        <div class="spin-btn inOut "><span>Spin</span></div>
+        <!-- Audio for wheel spinning sound -->
+        <audio src="./assets/wheel.mp3" id="wheel-spinning"></audio>
+    </div>
+
+
+<!-- Container for displaying the coupon -->
+<div class="coupon-container hide">
+    <!-- Audio for cheering sound -->
+    <audio src="./assets/cheers.mp3" id="cheering"></audio>
+    <div class="coupon-card ">
+        <!-- Logo SVG -->
+        <img src="./assets/congratulations.svg" class="logo mx-auto" alt="logo">
+        <!-- Coupon details -->
+        <h3>20% flat off on rides within the city.</h3>
+
+        <!-- Form untuk input dan tombol -->
+        <form id="couponForm" class="text-center">
+            <div class="coupon-row">
+                <input type="text" id="userid" name="userid" placeholder="User ID" class="block mx-auto mb-2 px-3 py-2 mt-5 rounded ">
+            </div>
+            <div class="coupon-row">
+                <input type="text" id="zoneid" name="zoneid" placeholder="Zone ID" class="block mx-auto mb-2 px-3 py-2 rounded">
+            </div>
+            <div class="coupon-row">
+                <button type="submit" class="bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300">Submit</button>
+            </div>
+        
+        </form>
+        <!-- Back button -->
+        <a href="index.html" id="back-btn">Back</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+ <!-- SweetAlert library -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+</body>
+
+</html>
