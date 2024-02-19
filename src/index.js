@@ -9,6 +9,8 @@ const couponContainer = document.querySelector('.coupon-container');
 const spinningAudio = document.getElementById('wheel-spinning');
 const cheerAudio = document.getElementById('cheering');
 const couponForm = document.getElementById('couponForm');
+const useridInput = document.getElementById('userid');
+const zoneidInput = document.getElementById('zoneid');
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -17,19 +19,27 @@ function handleSubmit(event) {
   const zoneid = zoneidInput.value;
 
   if (userid === zoneid) {
-      swal("Terima kasih!", "Anda sudah menggunakan ini", "success");
-
-     
-      setTimeout(() => {
-          window.location.href = "banner.html";
-      }, 3000);
+    showAlert("Terima kasih!", "Anda sudah menggunakan ini", "success");
   } else {
-      swal("Oops!", "User ID dan Zone ID harus diisi.", "error");
+    showAlert("Terima kasih!", "Anda sudah menggunakan ini", "success");
+    setTimeout(() => {
+      window.location.href = "banner.html";
+    }, 3000);
   }
 }
 
+function showAlert(title, text, icon) {
+  Swal.fire({
+    title: title,
+    text: text,
+    icon: icon,
+  });
+}
+
+
 
 couponForm.addEventListener('submit', handleSubmit);
+
 
 
 // Array to store the prize values
